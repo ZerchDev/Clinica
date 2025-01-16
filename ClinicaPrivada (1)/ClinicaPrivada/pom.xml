@@ -69,11 +69,10 @@
 			<artifactId>flyway-core</artifactId>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-			<version>9.22.0</version> <!-- Verifica la versión más reciente -->
+			<version>9.0.0</version> <!-- Verifica la versión más reciente -->
 		</dependency>
 
 		<dependency>
@@ -100,8 +99,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
