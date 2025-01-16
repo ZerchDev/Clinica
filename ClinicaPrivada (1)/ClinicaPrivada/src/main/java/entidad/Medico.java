@@ -28,3 +28,4 @@ public class Medico {
     private String especialidad;
 
 
+    }
