@@ -1,14 +1,12 @@
 package entidad;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "Medico")
 @Table(name = "medicos")
 @Getter
 @Setter
@@ -17,6 +15,7 @@ import lombok.Setter;
 public class Medico {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String nombre;
