@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,18 +24,35 @@ public class MedicoWS {
     //localhost:8081/api/mostrarmedicos
     //@GetMapping("/mostrarmedicos")
     //public List<Medico>mostrarmedicos(){
-      //  return imp.listamedicos();
+    //  return imp.listamedicos();
     //}
 
-    @GetMapping("/mostrarmedicos")
+    /*@GetMapping("/mostrarmedicos")
     public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size = 2) Pageable paginacion) {
         return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
-    }
+    }*/
 
+
+    //localhost:8081/api/mostrarmedicosnormal
     @GetMapping("/mostrarmedicosnormal")
-    public List<Medico>listado(){
-        return medicoRepository.findAll();
+    public List<?> mostrarmedicosnormal() {
+        return medicoRepository.listar();
         //System.out.println("si se manda a llamar elmetodo");
     }
 
+    //localhost:8081/api/guardarmedico
+    @PostMapping("/guardarmedico")
+    public ResponseEntity guardarmedico(@RequestBody Medico medico) {
+        String mensaje = "GUARDADO!!";
+        medicoRepository.save(medico);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(mensaje);
+    }
+
+    //localhost:8081/api/eliminarmedico
+    @DeleteMapping("/eliminarmedico")
+    public ResponseEntity eliminarMedico(@RequestBody Medico medico) {
+        String mensaje = "ELIMINADO!!!";
+        medicoRepository.delete(medico);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(mensaje);
+    }
 }
