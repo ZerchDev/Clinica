@@ -1,4 +1,4 @@
-package com.mx.ClinicaPrivada.entidad;
+package com.mx.ClinicaPrivada.entidades.medicos;
 
 public record DatosRegistroMedico(
 
@@ -14,8 +14,9 @@ public record DatosRegistroMedico(
 
         String email,
 
-        String especialidad,
+        Especialidad especialidad
+        
+        
 
-        boolean activo
 ) {
 }
